@@ -1,0 +1,29 @@
+.header_container{
+    height: 155px;
+}
+.logo_box{
+    height: 38px;
+    width: 45px;
+    background-image: url("../../Assets/WhatsApp\ Image\ 2023-02-03\ at\ 12.26.27\ PM.jpeg");
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.menu_button{
+    height: 38px;
+    width: 45px;
+    background-image: url("../../Assets/icons8-menu-48\ \(2\).png");
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.shopping_cart{
+    height: 45px;
+    width: 45px;
+    background-image: url("../../Assets/shopping-cart.png");
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+}
