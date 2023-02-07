@@ -33,7 +33,7 @@ const Header = () => {
           </div>
           <div className='flex space-x-2 justify-center items-center cursor-pointer from-right'>
             <IoLocationOutline />
-            <span>New Work</span>
+            <span>New York</span>
           </div>
         </div>
         <div className='grid gap-1 padding_inside items-center'>
