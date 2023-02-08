@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
 import Image from 'next/image'
 
+import {useDispatch, useSelector} from 'react-redux';
+import {toggle} from '../../Store/slices/globalSlice'
+
 import { IoCall, IoLocationOutline } from "react-icons/io5";
 import { TfiMenu } from "react-icons/tfi";
 
@@ -11,12 +14,19 @@ import menuButton from "../../Assets/icons8-menu-48 (2).png"
 import styles from "./style.module.css"
 
 const Header = () => {
- 
+   const {isSidebarOpen} = useSelector(state=>state.sidebar)
    const [searchTerm, setSearchTerm] = useState('');
+
+   const dispatch = useDispatch();
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
+
+  const handleMenuOnClick = (event) =>{
+    event.preventDefault();
+    dispatch(toggle());
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,9 +46,9 @@ const Header = () => {
             <span>New Work</span>
           </div>
         </div>
-        <div className='grid gap-1 padding_inside items-center'>
+        <div className={`grid gap-1 padding_inside items-center`}>
           <div className='flex justify-between items-center p-3'>
-            <div className={styles.menu_button}>
+            <div className={styles.menu_button} onClick={handleMenuOnClick}>
             </div>
             <div className={styles.logo_box}></div>
             <div className={styles.shopping_cart}>
