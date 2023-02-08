@@ -1,12 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { createWrapper } from 'next-redux-wrapper';
+import { configureStore } from "@reduxjs/toolkit";
+import { createWrapper } from "next-redux-wrapper";
 
-import sidebarReducer from './slices/globalSlice'
+import sidebarReducer from "./slices/globalSlice";
 
 const makeStore = () =>
   configureStore({
     reducer: {
-        sidebar: sidebarReducer,
+      sidebar: sidebarReducer,
     },
     devTools: true,
   });
