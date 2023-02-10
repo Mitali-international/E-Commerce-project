@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -41,7 +41,6 @@ const Header = () => {
 
   const handleMenuOnClick = (event) => {
     event.preventDefault();
-    console.log(event);
     dispatch(toggle());
   };
 
@@ -69,12 +68,28 @@ const Header = () => {
             className={`${styles.sticky} padding_inside flex bg-primary justify-between items-center`}
           >
             <div
-              className={`${styles.menu_button} my-6`}
+              className={`${styles.menu_button} my-6 ${styles.sticky_menu_button}`}
               onClick={handleMenuOnClick}
             ></div>
-            <div className={`${styles.logo_box} `}></div>
-            <div className={styles.search_icon}></div>
-            <div className={styles.shopping_cart}></div>
+            <div
+              className={`${styles.logo_box} ${styles.sticky_logo_box}`}
+            ></div>
+
+            <form onSubmit={handleSubmit} className="relative w-1/2">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="appearance-none rounded-full bg-white border border-secondary focus:outline-none focus:border-teal-500 text-base pl-12 py-2 pr-4 w-full"
+                value={searchTerm}
+                onChange={handleChange}
+              />
+
+              <div className={`${styles.search_icon}`}></div>
+            </form>
+
+            <div
+              className={`${styles.shopping_cart} ${styles.sticky_cart_icon}`}
+            ></div>
           </div>
         ) : (
           <div

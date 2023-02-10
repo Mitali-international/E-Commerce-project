@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./sidebar.module.css";
 import { FaTimes } from "react-icons/fa";
 import { TiArrowSortedDown } from "react-icons/ti";
@@ -10,14 +10,22 @@ import { toggle } from "@/Store/slices/globalSlice";
 const Sidebar = () => {
   const { isSidebarOpen } = useSelector((state) => state.sidebar);
   const dispatch = useDispatch();
+  const sidebarRef = useRef(null);
 
   const handleMenuButton = (event) => {
     event.preventDefault();
     dispatch(toggle());
   };
 
+  const handleClickOutside = (event) => {
+    if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+      dispatch(toggle());
+    }
+  };
+
   return (
     <div
+      ref={sidebarRef}
       className={`${
         isSidebarOpen
           ? `${styles.sidebar} ${styles.show_sidebar}`
